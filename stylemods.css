@@ -203,3 +203,28 @@
 .rs-picker-daterange-menu .rs-calendar:first-child {
   border: none;
 }
+
+.kizen-quick-selection .rs-picker-quickSelection-option,
+.kizen-daterangepicker-toolbar > button {
+  background-color: #ffffff;
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-calendar-group {
+  min-width: auto;
+  width: auto;
+  height: auto;
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-calendar-group {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+@media only screen and (min-width : 768px) {
+  .rs-picker-daterange-panel .rs-picker-daterange-calendar-group {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
