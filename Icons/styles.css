@@ -2,3 +2,7 @@
     width: .375em;
     font-size: 3em;
 }
+
+.kizen-calendar-header-icons.disabled {
+    color: #D8DDE1;
+}

@@ -11,9 +11,6 @@ import classNames from 'classnames';
 import { format } from 'date-fns';
 import { prefix, defaultProps } from '../utils';
 import IntlContext from '../IntlProvider/IntlContext';
-
-// import Button from '../../Button';
-// import Icon from '../../Icon';
 import LeftIcon from '../Icons/LeftIcon';
 import RightIcon from '../Icons/RightIcon';
 
@@ -118,11 +115,10 @@ class Header extends React.PureComponent {
     const monthToolbar = (
       <div className={this.addPrefix('month-toolbar')}>
         <button
-          //disable button class todo
-          className={backwardClass}
+          disabled={disabledBackward}
           onClick={disabledBackward ? undefined : onMoveBackward}
         >
-          <LeftIcon />
+          <LeftIcon className={backwardClass}/>
         </button>
         <span
           role="button"
@@ -133,11 +129,10 @@ class Header extends React.PureComponent {
           {this.renderTitle()}
         </span>
         <button
-          //disable button class todo
-          className={forwardClass}
+          disabled={disabledForword}
           onClick={disabledForword ? undefined : onMoveForword}
         >
-          <RightIcon />
+          <RightIcon className={forwardClass}/>
         </button>
       </div>
     );

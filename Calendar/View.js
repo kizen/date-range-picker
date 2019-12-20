@@ -1,6 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/static-property-placement */
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
