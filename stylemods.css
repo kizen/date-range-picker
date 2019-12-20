@@ -1,0 +1,205 @@
+.kizen-daterange-content {
+  display: grid;
+  grid-template-columns: 123px 1fr;
+}
+
+.kizen-quick-selection-container {
+  text-align: center;
+  border-right: 1px solid #eceef0;
+  margin-bottom: 10px;
+}
+
+.kizen-quick-selection-header {
+  margin: 23px 0px 12px 0px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.kizen-quick-selection {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.kizen-daterangepicker-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #e5e5ea;
+  padding: 15px;
+  margin-top: 4px;
+  font-size: 1.4em;
+  font-weight: 400;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.kizen-daterangepicker-toolbar .clearButton {
+  color: #fb7373;
+  text-transform: uppercase;
+}
+
+.kizen-daterangepicker-toolbar .applyButton {
+  color: #4bc7bf;
+  text-transform: uppercase;
+}
+
+.rs-calendar-header-month-toolbar i.disabled svg {
+  color: #a8b3bc;
+}
+
+/** Overrides **/
+/* .rs-picker-daterange-menu .rs-calendar:first-child {
+    border-right: none;
+}
+
+.rs-calendar-table-cell-in-range::before {
+  background-color: #CEDEFC;
+} */
+
+.rs-picker-daterange-panel {
+  color: #4a5660;
+}
+
+.rs-picker-quickSelection-option {
+  display: flex;
+  align-items: center;
+  padding: 9px 15px;
+  text-align: left;
+}
+
+.rs-picker-quickSelection-option:hover {
+  background-color: #cedefc;
+}
+
+.rs-picker-quickSelection-option > span {
+  font-size: 14px;
+}
+
+.rs-picker-quickSelection-option.selected > span {
+  color: #528ef9;
+}
+
+.rs-calendar-table-cell.rs-calendar-table-cell-is-today > span {
+  border-color: #528ef9;
+  border-radius: 24px;
+}
+
+.rs-calendar-table-cell.rs-calendar-table-cell-selected-start.rs-calendar-table-cell-selected
+  > span,
+.rs-calendar-table-cell.rs-calendar-table-cell-selected-end.rs-calendar-table-cell-selected
+  > span {
+  background-color: #528ef9;
+  border-color: #528ef9;
+  border-radius: 24px;
+}
+
+.rs-calendar-table-cell-in-range::before,
+.rs-calendar-table-cell-content:hover {
+  background-color: #cedefc;
+}
+
+.rs-calendar-table-cell-content:hover {
+  border-radius: 24px;
+}
+
+.rs-calendar-table-cell-selected-start::before {
+  background: #cedefc; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(
+    left,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+    right,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    right,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+    to right,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* Standard syntax */
+}
+
+.rs-calendar-table-cell-selected-start.rs-calendar-table-cell-selected-end::before {
+  background: #ffffff;
+}
+
+.rs-calendar-table-cell-selected-end::before {
+  background: #cedefc; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(
+    right,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+    left,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    left,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+    to left,
+    #ffffff 50%,
+    #cedefc 50%
+  ); /* Standard syntax */
+}
+
+.rs-calendar-table-cell.rs-calendar-table-cell-un-same-month > span {
+  color: #a8b3bc;
+}
+
+.rs-calendar-header-title.rs-calendar-header-title-date {
+  font-size: 24px;
+  font-weight: 100;
+  color: #4a5660;
+}
+
+.rs-calendar .rs-calendar-header .rs-calendar-header-month-toolbar {
+  display: grid;
+  grid-template-columns: 0px 20px 1fr 20px 0px;
+  padding: 0px 12px;
+}
+
+.rs-calendar-table-header-row
+  .rs-calendar-table-cell
+  .rs-calendar-table-cell-content
+  > span {
+  font-size: 18px;
+  color: #4a5660;
+}
+
+.rs-calendar-view {
+  padding-top: 12px;
+}
+
+.rs-calendar-header.rs-calendar-header-has-month {
+  padding: 0px;
+}
+
+.rs-calendar-header {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.rs-calendar-header-month-toolbar .rs-calendar-header-backward,
+.rs-calendar-header-month-toolbar .rs-calendar-header-forward {
+  padding: 0px;
+}
+
+.rs-calendar-header-title.rs-calendar-header-title-date {
+  margin: 0px;
+  padding: 0px;
+}
+
+.rs-picker-daterange-menu .rs-calendar:first-child {
+  border: none;
+}

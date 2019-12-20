@@ -1,0 +1,43 @@
+{
+  "name": "kizen-date-range-picker",
+  "version": "0.1.0",
+  "description": "Kizen date range picker",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kizen/date-range-picker.git"
+  },
+  "author": "Kizen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kizen/date-range-picker/issues"
+  },
+  "homepage": "https://github.com/kizen/date-range-picker#readme",
+  "dependencies": {
+    "@emotion/styled": "^10.0.23",
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.8.1",
+    "dom-lib": "^1.2.1",
+    "element-resize-event": "^3.0.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-virtualized": "^9.21.2",
+    "recompose": "^0.30.0",
+    "rsuite-utils": "^2.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-react-jsx": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.0",
+    "style-loader": "^1.0.2",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  }
+}
