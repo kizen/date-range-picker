@@ -1,8 +1,3 @@
-.kizen-daterange-content {
-  display: grid;
-  grid-template-columns: 123px 1fr;
-}
-
 .kizen-quick-selection-container {
   text-align: center;
   border-right: 1px solid #eceef0;
@@ -215,15 +210,27 @@
   height: auto;
 }
 
+.rs-calendar-header-month-toolbar button {
+  background-color: #ffffff;
+}
+
 .rs-picker-daterange-panel .rs-picker-daterange-calendar-group {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr;
 }
 
+.kizen-daterange-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
 @media only screen and (min-width : 768px) {
+  .kizen-daterange-content {
+    grid-template-columns: 123px 1fr;
+  }
+
   .rs-picker-daterange-panel .rs-picker-daterange-calendar-group {
-    display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
   }
