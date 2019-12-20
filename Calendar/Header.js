@@ -14,6 +14,8 @@ import IntlContext from '../IntlProvider/IntlContext';
 
 // import Button from '../../Button';
 // import Icon from '../../Icon';
+import LeftIcon from '../Icons/LeftIcon';
+import RightIcon from '../Icons/RightIcon';
 
 class Header extends React.PureComponent {
   static contextType = IntlContext;
@@ -115,14 +117,13 @@ class Header extends React.PureComponent {
 
     const monthToolbar = (
       <div className={this.addPrefix('month-toolbar')}>
-        {/* <Button
-          disabled={disabledBackward}
-          variant="text"
-          noSpace
+        <button
+          //disable button class todo
+          className={backwardClass}
           onClick={disabledBackward ? undefined : onMoveBackward}
         >
-          <Icon className={backwardClass} icon="left" size="3x" />
-        </Button> */}
+          <LeftIcon />
+        </button>
         <span
           role="button"
           tabIndex={-1}
@@ -131,14 +132,13 @@ class Header extends React.PureComponent {
         >
           {this.renderTitle()}
         </span>
-        {/* <Button
-          disabled={disabledForword}
-          variant="text"
-          noSpace
+        <button
+          //disable button class todo
+          className={forwardClass}
           onClick={disabledForword ? undefined : onMoveForword}
         >
-          <Icon className={forwardClass} icon="right" size="3x" />
-        </Button> */}
+          <RightIcon />
+        </button>
       </div>
     );
 
