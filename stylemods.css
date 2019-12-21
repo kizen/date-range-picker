@@ -56,15 +56,6 @@
   color: #a8b3bc;
 }
 
-/** Overrides **/
-/* .rs-picker-daterange-menu .rs-calendar:first-child {
-    border-right: none;
-}
-
-.rs-calendar-table-cell-in-range::before {
-  background-color: #CEDEFC;
-} */
-
 .rs-picker-daterange-panel {
   color: #4a5660;
 }
@@ -112,28 +103,90 @@
   border-radius: 24px;
 }
 
-.rs-calendar-table-cell-selected-start::before {
-  background: #cedefc; /* For browsers that do not support gradients */
+.cell-in-range-after-start ~ .rs-calendar-table-cell-selected-start::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+}
+
+.cell-in-range-before-start ~ .rs-calendar-table-cell-selected-start::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to left,#ffffff 50%,#cedefc 50%);
+}
+
+.cell-in-range-after-start ~ .rs-calendar-table-cell-selected-end::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to left,#ffffff 50%,#cedefc 50%);
+}
+
+.cell-in-range-before-start ~ .rs-calendar-table-cell-selected-end::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+}
+
+.cell-not-in-range + .rs-calendar-table-cell-selected-end::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+}
+
+.cell-not-in-range + .rs-calendar-table-cell-selected-start::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+}
+
+.rs-calendar-table-row .rs-calendar-table-cell-selected.cell-left-edge::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+}
+
+.cell-not-in-range + .cell-same-start-end::before,
+.cell-not-in-range + .cell-same-start-end::before,
+.cell-not-in-range + .cell-not-in-range::before  {
+  background: #ffffff; 
+}
+
+/* .rs-calendar-table-cell-selected-start::before {
+  background: #cedefc; 
   background: -webkit-linear-gradient(
     left,
     #ffffff 50%,
     #cedefc 50%
-  ); /* For Safari 5.1 to 6.0 */
+  );
   background: -o-linear-gradient(
     right,
     #ffffff 50%,
     #cedefc 50%
-  ); /* For Opera 11.1 to 12.0 */
+  );
   background: -moz-linear-gradient(
     right,
     #ffffff 50%,
     #cedefc 50%
-  ); /* For Firefox 3.6 to 15 */
+  );
   background: linear-gradient(
     to right,
     #ffffff 50%,
     #cedefc 50%
-  ); /* Standard syntax */
+  );
 }
 
 .rs-calendar-table-cell-selected-start.rs-calendar-table-cell-selected-end::before {
@@ -141,28 +194,28 @@
 }
 
 .rs-calendar-table-cell-selected-end::before {
-  background: #cedefc; /* For browsers that do not support gradients */
+  background: #cedefc;
   background: -webkit-linear-gradient(
     right,
     #ffffff 50%,
     #cedefc 50%
-  ); /* For Safari 5.1 to 6.0 */
+  );
   background: -o-linear-gradient(
     left,
     #ffffff 50%,
     #cedefc 50%
-  ); /* For Opera 11.1 to 12.0 */
+  );
   background: -moz-linear-gradient(
     left,
     #ffffff 50%,
     #cedefc 50%
-  ); /* For Firefox 3.6 to 15 */
+  );
   background: linear-gradient(
     to left,
     #ffffff 50%,
     #cedefc 50%
-  ); /* Standard syntax */
-}
+  );
+} */
 
 .rs-calendar-table-cell.rs-calendar-table-cell-un-same-month > span {
   color: #a8b3bc;

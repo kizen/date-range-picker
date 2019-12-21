@@ -74,20 +74,24 @@ class TableRow extends React.Component {
         !unSameMonth && selectedEndDate && isSameDay(thisDate, selectedEndDate);
 
       const isSelected = isStartSelected || isEndSelected;
+      let inRangeAfterStart = false;
+      let inRangeBeforeStart = false;
 
       // for Selected
       if (selectedStartDate && selectedEndDate) {
         if (
-          isBefore(thisDate, selectedEndDate) &&
-          isAfter(thisDate, selectedStartDate)
+          (isBefore(thisDate, selectedEndDate) || isSameDay(thisDate, selectedEndDate)) &&
+          (isAfter(thisDate, selectedStartDate) || isSameDay(thisDate, selectedStartDate))
         ) {
           inRange = true;
+          inRangeAfterStart = true;
         }
         if (
-          isBefore(thisDate, selectedStartDate) &&
-          isAfter(thisDate, selectedEndDate)
+          (isBefore(thisDate, selectedStartDate) || isSameDay(thisDate, selectedStartDate)) &&
+          (isAfter(thisDate, selectedEndDate) || isSameDay(thisDate, selectedEndDate))
         ) {
           inRange = true;
+          inRangeBeforeStart = true;
         }
       }
 
@@ -107,6 +111,10 @@ class TableRow extends React.Component {
         }
       }
 
+      if (isSameDay(hoverStartDate, hoverEndDate) || isSameDay(selectedStartDate, selectedEndDate)) {
+        inRange = false;
+      }
+
       const classes = classNames(this.addPrefix('cell'), {
         [this.addPrefix('cell-un-same-month')]: unSameMonth,
         [this.addPrefix('cell-is-today')]: isToday,
@@ -115,7 +123,12 @@ class TableRow extends React.Component {
         [this.addPrefix('cell-selected')]: isInSameMonth && isSelected,
         [this.addPrefix('cell-in-range')]: isInSameMonth && inRange,
         [this.addPrefix('cell-disabled')]: disabled,
-        [this.addPrefix('cell-un-same-month')]: !isInSameMonth
+        [this.addPrefix('cell-un-same-month')]: !isInSameMonth,
+        'cell-in-range-after-start': inRange && inRangeAfterStart,
+        'cell-in-range-before-start': inRange && inRangeBeforeStart,
+        'cell-same-start-end': isSameDay(selectedStartDate, selectedEndDate),
+        'cell-not-in-range': !inRange,
+        'cell-left-edge': i === 0
       });
 
       const title = format(thisDate, 'mm-dd-yyyy');
