@@ -58,7 +58,6 @@ class DateRangePicker extends React.Component {
     value: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     defaultValue: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     defaultCalendarValue: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
-    placeholder: PropTypes.node,
     format: PropTypes.string,
     disabled: PropTypes.bool,
     locale: PropTypes.object,
@@ -96,14 +95,12 @@ class DateRangePicker extends React.Component {
     onExit: PropTypes.func,
     onExiting: PropTypes.func,
     onExited: PropTypes.func,
-    renderValue: PropTypes.func
   };
   static defaultProps = {
     appearance: 'default',
     placement: 'bottomStart',
     limitEndYear: 1000,
-    format: 'MMMM dd, yyyy',
-    placeholder: '',
+    format: 'MM/dd/yy',
     locale: {
       sunday: 'Su',
       monday: 'Mo',
@@ -131,7 +128,8 @@ class DateRangePicker extends React.Component {
           setTimingMargin(new Date()),
           setTimingMargin(new Date(), 'right')
         ],
-        closeOverlay: false
+        closeOverlay: false,
+        customPlaceholderLabel: 'Today'
       },
       {
         label: 'yesterday',
@@ -139,7 +137,8 @@ class DateRangePicker extends React.Component {
           setTimingMargin(addDays(new Date(), -1)),
           setTimingMargin(addDays(new Date(), -1), 'right')
         ],
-        closeOverlay: false
+        closeOverlay: false,
+        customPlaceholderLabel: 'Yesterday'
       },
       {
         label: 'thisMonth',
@@ -147,7 +146,8 @@ class DateRangePicker extends React.Component {
           setTimingMargin(startOfMonth(new Date())),
           setTimingMargin(new Date(), 'right')
         ],
-        closeOverlay: false
+        closeOverlay: false,
+        customPlaceholderLabel: 'This Month'
       },
       {
         label: 'last7Days',
@@ -163,7 +163,7 @@ class DateRangePicker extends React.Component {
           setTimingMargin(subDays(new Date(), 30)),
           setTimingMargin(new Date(), 'right')
         ],
-        closeOverlay: false
+        closeOverlay: false,
       },
       {
         label: 'thisYear',
@@ -171,7 +171,8 @@ class DateRangePicker extends React.Component {
           setTimingMargin(startOfYear(new Date())),
           setTimingMargin(new Date(), 'right')
         ],
-        closeOverlay: false
+        closeOverlay: false,
+        customPlaceholderLabel: 'This Year'
       },
       {
         label: 'allTime',
@@ -181,7 +182,9 @@ class DateRangePicker extends React.Component {
           setTimingMargin(setYear(startOfYear(new Date()), 2000)),
           setTimingMargin(new Date(), 'right')
         ],
-        closeOverlay: false
+        closeOverlay: false,
+        default: true,
+        customPlaceholderLabel: 'All Time'
       }
     ]
   };
@@ -210,8 +213,12 @@ class DateRangePicker extends React.Component {
   constructor(props) {
     super(props);
 
-    const { defaultValue, value, defaultCalendarValue } = props;
-    const activeValue = value || defaultValue || [];
+    const { defaultValue, value, defaultCalendarValue, ranges } = props;
+    const defaultRangeIndex = ranges.findIndex((element) => {
+      return element.default
+    });
+    const defaultRange = defaultRangeIndex !== -1 ? ranges[defaultRangeIndex].value : null;
+    const activeValue = value || defaultValue || defaultRange || [];
     const calendarDate = getCalendarDate(value || defaultCalendarValue);
 
     this.state = {
@@ -221,7 +228,7 @@ class DateRangePicker extends React.Component {
       calendarDate,
       hoverValue: [],
       currentHoverDate: null,
-      selectedIndex: null,
+      selectedIndex: defaultRangeIndex !== -1 ? defaultRangeIndex : null,
       tempSelectedIndex: null
     };
 
@@ -240,24 +247,27 @@ class DateRangePicker extends React.Component {
     return this.state.value || [];
   };
 
-  getDateString(value) {
-    const { placeholder, format: formatType, renderValue } = this.props;
-    const nextValue = value || this.getValue();
+  getDateString() {
+    const { format: formatType, ranges } = this.props;
+    const nextValue = this.getValue();
     const startDate = nextValue && nextValue[0];
     const endDate = nextValue && nextValue[1];
 
     if (startDate && endDate) {
       const displayValue = [startDate, endDate].sort(compareAsc);
 
-      return renderValue
-        ? renderValue(displayValue, formatType)
-        : `${format(displayValue[0], formatType)} - ${format(
-            displayValue[1],
-            formatType
-          )}`;
+      const matchingRange = ranges.find((element) => {
+        return isSameDay(element.value[0], displayValue[0]) && isSameDay(element.value[1], displayValue[1]);
+      });
+      
+      if (matchingRange && matchingRange.customPlaceholderLabel) {
+        return matchingRange.customPlaceholderLabel;
+      }
+
+      return `${format(displayValue[0], formatType)} - ${format(displayValue[1], formatType)}`;
     }
 
-    return placeholder;
+    return '';
   }
 
   // hover range presets
@@ -628,9 +638,6 @@ class DateRangePicker extends React.Component {
               'kizen-daterange-content'
             )}
           >
-            {/* <div className={this.addPrefix('daterange-header')}>
-              {this.getDateString(selectValue)}jon
-            </div> */}
             <div className="kizen-quick-selection-container">
               <div className="kizen-quick-selection-header">
                 Quick Selection
