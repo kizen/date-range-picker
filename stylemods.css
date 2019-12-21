@@ -50,6 +50,7 @@
 .kizen-daterangepicker-toolbar .applyButton {
   color: #4bc7bf;
   text-transform: uppercase;
+  background-color: #ffffff;
 }
 
 .rs-calendar-header-month-toolbar i.disabled svg {
@@ -151,7 +152,30 @@
   background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
 }
 
+.rs-calendar-table-row .rs-calendar-table-cell.rs-calendar-table-cell-selected.cell-not-in-range.cell-left-edge::before {
+  background: #ffffff;
+}
+
 .rs-calendar-table-row .rs-calendar-table-cell-selected.cell-left-edge::before {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+}
+
+.rs-calendar-table-row .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected::before,
+.rs-calendar-table-row .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected::before
+ {
+  background: #cedefc; 
+  background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
+  background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
+  background: linear-gradient(to left,#ffffff 50%,#cedefc 50%);
+}
+
+.rs-calendar-table-row .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-end::before,
+.rs-calendar-table-row .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-start::before  {
   background: #cedefc; 
   background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
@@ -164,58 +188,6 @@
 .cell-not-in-range + .cell-not-in-range::before  {
   background: #ffffff; 
 }
-
-/* .rs-calendar-table-cell-selected-start::before {
-  background: #cedefc; 
-  background: -webkit-linear-gradient(
-    left,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-  background: -o-linear-gradient(
-    right,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-  background: -moz-linear-gradient(
-    right,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-  background: linear-gradient(
-    to right,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-}
-
-.rs-calendar-table-cell-selected-start.rs-calendar-table-cell-selected-end::before {
-  background: #ffffff;
-}
-
-.rs-calendar-table-cell-selected-end::before {
-  background: #cedefc;
-  background: -webkit-linear-gradient(
-    right,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-  background: -o-linear-gradient(
-    left,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-  background: -moz-linear-gradient(
-    left,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-  background: linear-gradient(
-    to left,
-    #ffffff 50%,
-    #cedefc 50%
-  );
-} */
 
 .rs-calendar-table-cell.rs-calendar-table-cell-un-same-month > span {
   color: #a8b3bc;
