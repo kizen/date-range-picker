@@ -4,6 +4,21 @@
   margin-bottom: 10px;
 }
 
+.rs-picker-daterange .rs-picker-toggle.kizen-date-range-picker-dropdown .rs-picker-toggle-value {
+  font-size: 14px;
+  color: #4A5660;
+}
+
+.kizen-date-range-picker-dropdown-icon {
+  margin-left: 15px;
+}
+
+.rs-picker-toggle.kizen-date-range-picker-dropdown {
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
+}
+
 .kizen-quick-selection-header {
   margin: 23px 0px 12px 0px;
   font-size: 11px;
@@ -59,6 +74,7 @@
   align-items: center;
   padding: 9px 15px;
   text-align: left;
+  background-color: #ffffff;
 }
 
 .rs-picker-quickSelection-option:hover {
@@ -197,11 +213,6 @@
 
 .rs-picker-daterange-menu .rs-calendar:first-child {
   border: none;
-}
-
-.kizen-quick-selection .rs-picker-quickSelection-option,
-.kizen-daterangepicker-toolbar > button {
-  background-color: #ffffff;
 }
 
 .rs-picker-daterange-panel .rs-picker-daterange-calendar-group {

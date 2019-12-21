@@ -9,15 +9,14 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Ripple from '../Ripple';
 import { prefix, defaultProps, createChainedFunction } from '../utils';
+import DownIcon from '../Icons/DownIcon';
 
 class PickerToggle extends React.Component {
   static propTypes = {
     classPrefix: PropTypes.string,
     hasValue: PropTypes.bool,
-    cleanable: PropTypes.bool,
     className: PropTypes.string,
     children: PropTypes.node,
-    caret: PropTypes.bool,
     componentClass: PropTypes.elementType,
     onClean: PropTypes.func,
     active: PropTypes.bool
@@ -25,8 +24,7 @@ class PickerToggle extends React.Component {
 
   static defaultProps = {
     componentClass: 'a',
-    tabIndex: 0,
-    caret: true
+    tabIndex: 0
   };
 
   constructor(props) {
@@ -68,28 +66,13 @@ class PickerToggle extends React.Component {
     }
   };
 
-  renderToggleClean() {
-    return (
-      <span
-        className={this.addPrefix('clean')}
-        role="button"
-        tabIndex={-1}
-        onClick={this.handleClean}
-      >
-        ✕
-      </span>
-    );
-  }
-
   render() {
     const {
       componentClass: Component,
       children,
       className,
       hasValue,
-      cleanable,
       classPrefix,
-      caret,
       active,
       tabIndex,
       onClick
@@ -98,8 +81,8 @@ class PickerToggle extends React.Component {
     const defaultClassName =
       Component === 'a' ? classPrefix : this.addPrefix('custom');
     const classes = classNames(defaultClassName, className, {
-      active: active || this.state.active
-    });
+      active: active || this.state.active,
+    }, 'kizen-date-range-picker-dropdown');
 
     return (
       <Component
@@ -114,8 +97,7 @@ class PickerToggle extends React.Component {
         <span className={this.addPrefix(hasValue ? 'value' : 'placeholder')}>
           {children}
         </span>
-        {hasValue && cleanable && this.renderToggleClean()}
-        {caret && <span className={this.addPrefix('caret')} />}
+        <DownIcon className="kizen-date-range-picker-dropdown-icon"/>
         <Ripple />
       </Component>
     );

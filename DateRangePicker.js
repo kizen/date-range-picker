@@ -66,7 +66,6 @@ class DateRangePicker extends React.Component {
       PropTypes.oneOf(['week', 'month']),
       PropTypes.func
     ]),
-    cleanable: PropTypes.bool,
     isoWeek: PropTypes.bool,
     oneTap: PropTypes.bool,
     limitEndYear: PropTypes.number,
@@ -105,7 +104,6 @@ class DateRangePicker extends React.Component {
     limitEndYear: 1000,
     format: 'MMMM dd, yyyy',
     placeholder: '',
-    cleanable: true,
     locale: {
       sunday: 'Su',
       monday: 'Mo',
@@ -667,7 +665,6 @@ class DateRangePicker extends React.Component {
   render() {
     const {
       disabled,
-      cleanable,
       locale,
       toggleComponentClass,
       style,
@@ -700,7 +697,6 @@ class DateRangePicker extends React.Component {
             <PickerToggle
               componentClass={toggleComponentClass}
               onClean={createChainedFunction(this.handleClean, onClean)}
-              cleanable={cleanable && !disabled}
               hasValue={hasValue}
               active={this.state.active}
             >
