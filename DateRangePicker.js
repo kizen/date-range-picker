@@ -347,30 +347,39 @@ class DateRangePicker extends React.Component {
   };
 
   handleQuickSelection = (value, selectedIndex) => {
-    this.updateValue(null, value, true, selectedIndex);
+    this.setState({
+      selectValue: value,
+      value: value,
+      selectedIndex: selectedIndex,
+      tempSelectedIndex: null
+    });
+
+    this.handleCloseDropdown();
   };
 
   updateValue(
     event,
     nextSelectValue,
-    closeOverlay = true,
-    selectedIndex = null
+    closeOverlay = true
   ) {
-    const { value, selectValue, tempSelectedIndex } = this.state;
-    const { onChange } = this.props;
+    const { value, selectValue, selectedIndex, tempSelectedIndex } = this.state;
+    const { onChange, ranges } = this.props;
     const nextValue = !_.isUndefined(nextSelectValue)
       ? nextSelectValue
       : selectValue;
 
-    let newSelectedIndex = selectedIndex;
-    if (tempSelectedIndex != null && tempSelectedIndex >= 0) {
-      newSelectedIndex = tempSelectedIndex;
-    }
+    //Find if the selected values are in our ranges
+    const rangeExistsIndex = ranges.findIndex((element) => {
+      const dates = element.value;
+      return (
+        isSameDay(dates[0], nextValue[0]) && isSameDay(dates[1], nextValue[1])
+      );
+    });
 
     this.setState({
       selectValue: nextValue || [],
       value: nextValue,
-      selectedIndex: newSelectedIndex,
+      selectedIndex: rangeExistsIndex !== -1 ? rangeExistsIndex : null,
       tempSelectedIndex: null
     });
 

@@ -131,7 +131,7 @@ class TableRow extends React.Component {
         'cell-left-edge': i === 0
       });
 
-      const title = format(thisDate, 'mm-dd-yyyy');
+      const title = format(thisDate, 'MM-dd-yyyy');
 
       days.push(
         <IntlContext.Consumer key={title}>

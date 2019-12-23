@@ -4,6 +4,11 @@
   margin-bottom: 10px;
 }
 
+.rs-picker-menu .rs-calendar .rs-calendar-month-dropdown-cell-content, .rs-picker-menu .rs-calendar .rs-calendar-table-cell-content {
+  height: 28px;
+  width: 28px;
+}
+
 .rs-picker-daterange .rs-picker-toggle.kizen-date-range-picker-dropdown .rs-picker-toggle-value {
   font-size: 14px;
   color: #4A5660;
