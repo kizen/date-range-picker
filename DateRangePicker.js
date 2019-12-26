@@ -362,11 +362,28 @@ class DateRangePicker extends React.Component {
     nextSelectValue,
     closeOverlay = true
   ) {
-    const { value, selectValue, selectedIndex, tempSelectedIndex } = this.state;
+    const { value, selectValue } = this.state;
     const { onChange, ranges } = this.props;
-    const nextValue = !_.isUndefined(nextSelectValue)
+    
+    let nextValue = !_.isUndefined(nextSelectValue)
       ? nextSelectValue
       : selectValue;
+
+    //Odd case where you can only select 1 value and right click out of selection to hit apply
+    if (nextValue && nextValue[1] === undefined) {
+      nextValue[1] = nextValue[0];
+    }
+
+    //Remove any extra dates caused by not selecting
+    if (nextValue.length > 2) {
+      nextValue = nextValue.slice(0, 2);
+    }
+
+    if (isAfter(nextValue[0], nextValue[1])) {
+      nextValue.reverse();;
+    }
+
+    setTimingMargin(nextValue[1], 'right');
 
     //Find if the selected values are in our ranges
     const rangeExistsIndex = ranges.findIndex((element) => {
