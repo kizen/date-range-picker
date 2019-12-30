@@ -158,7 +158,7 @@ class DateRangePicker extends React.Component {
       {
         label: 'last30Days',
         value: [
-          setTimingMargin(subDays(new Date(), 30)),
+          setTimingMargin(subDays(new Date(), 29)),
           setTimingMargin(new Date(), 'right')
         ],
         closeOverlay: false,
