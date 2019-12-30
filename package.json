@@ -1,6 +1,6 @@
 {
   "name": "kizen-date-range-picker",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Kizen date range picker",
   "main": "dist/index.js",
   "scripts": {
