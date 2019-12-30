@@ -39,7 +39,6 @@ import {
   createChainedFunction,
   withPickerMethods,
   setTimingMargin,
-  getCalendarDate,
   TYPE
 } from './utils';
 
@@ -88,7 +87,6 @@ class DateRangePicker extends React.Component {
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
     onHide: PropTypes.func,
-    onClean: PropTypes.func,
     onEnter: PropTypes.func,
     onEntering: PropTypes.func,
     onEntered: PropTypes.func,
@@ -184,6 +182,7 @@ class DateRangePicker extends React.Component {
         ],
         closeOverlay: false,
         default: true,
+        isAllTime: true,
         customPlaceholderLabel: 'All Time'
       }
     ]
@@ -203,7 +202,7 @@ class DateRangePicker extends React.Component {
       return {
         value,
         selectValue: value,
-        calendarDate: getCalendarDate(value)
+        calendarDate: this.getCalendarDate(value)
       };
     }
 
@@ -219,7 +218,7 @@ class DateRangePicker extends React.Component {
     });
     const defaultRange = defaultRangeIndex !== -1 ? ranges[defaultRangeIndex].value : null;
     const activeValue = value || defaultValue || defaultRange || [];
-    const calendarDate = getCalendarDate(value || defaultCalendarValue);
+    const calendarDate = this.getCalendarDate(value || defaultCalendarValue);
 
     this.state = {
       value: activeValue,
@@ -235,6 +234,31 @@ class DateRangePicker extends React.Component {
     // for test
     this.menuContainerRef = React.createRef();
     this.triggerRef = React.createRef();
+  }
+
+  getCalendarDate = (value = [], nextSelectedIndex = null) => {
+    if (value[0] && value[1]) {
+      if (this.isAllTime(nextSelectedIndex)) {
+        console.log('IsAllTime');
+        return [value[1], addMonths(value[1], 1)];
+      }
+      const sameMonth = isSameMonth(value[0], value[1]);
+      return [value[0], sameMonth ? addMonths(value[1], 1) : value[1]];
+    }
+    return [new Date(), addMonths(new Date(), 1)];
+  }
+
+  isAllTime = (nextSelectedIndex = null) => {
+    const { selectedIndex } = this.state;
+    const { ranges } = this.props;
+
+    const allTimeRangeIndex = ranges.findIndex(element => {
+      return element.isAllTime;
+    });
+
+    return nextSelectedIndex !== null ?
+      nextSelectedIndex === allTimeRangeIndex :
+      selectedIndex === allTimeRangeIndex;
   }
 
   getValue = () => {
@@ -332,15 +356,6 @@ class DateRangePicker extends React.Component {
       this.triggerRef.current.show();
     }
   };
-
-  resetPageDate() {
-    const selectValue = this.getValue();
-    const calendarDate = getCalendarDate(selectValue);
-    this.setState({
-      selectValue,
-      calendarDate
-    });
-  }
 
   handleClear = (value, closeOverlay, event) => {
     this.updateValue(event, value, closeOverlay, true);
@@ -455,9 +470,9 @@ class DateRangePicker extends React.Component {
       });
 
       this.setState({
-        calendarDate: getCalendarDate(nextValue),
         selectedIndex,
-        tempSelectedIndex: rangeExistsIndex
+        tempSelectedIndex: rangeExistsIndex,
+        calendarDate: this.getCalendarDate(nextValue, rangeExistsIndex)
       });
     }
 
@@ -535,29 +550,12 @@ class DateRangePicker extends React.Component {
     });
   };
 
-  handleClean = (event) => {
-    this.setState({ calendarDate: getCalendarDate() });
-    this.updateValue(event, []);
-  };
-
   handleEnter = () => {
     const value = this.getValue();
 
-    let calendarDate;
-
-    if (value && value.length) {
-      const [startDate, endData] = value;
-      calendarDate = [
-        startDate,
-        isSameMonth(startDate, endData) ? addMonths(endData, 1) : endData
-      ];
-    } else {
-      calendarDate = getCalendarDate(this.props.defaultCalendarValue);
-    }
-
     this.setState({
       selectValue: value,
-      calendarDate,
+      calendarDate: this.getCalendarDate(value),
       active: true
     });
   };
@@ -703,8 +701,7 @@ class DateRangePicker extends React.Component {
       style,
       onEntered,
       onEnter,
-      onExited,
-      onClean
+      onExited
     } = this.props;
 
     const value = this.getValue();
@@ -729,7 +726,6 @@ class DateRangePicker extends React.Component {
           >
             <PickerToggle
               componentClass={toggleComponentClass}
-              onClean={createChainedFunction(this.handleClean, onClean)}
               hasValue={hasValue}
               active={this.state.active}
             >

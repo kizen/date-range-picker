@@ -18,7 +18,6 @@ class PickerToggle extends React.Component {
     className: PropTypes.string,
     children: PropTypes.node,
     componentClass: PropTypes.elementType,
-    onClean: PropTypes.func,
     active: PropTypes.bool
   };
 
@@ -37,12 +36,6 @@ class PickerToggle extends React.Component {
   }
 
   addPrefix = (name) => prefix(this.props.classPrefix)(name);
-
-  handleClean = (event) => {
-    this.props.onClean && this.props.onClean(event);
-    event.stopPropagation();
-    this.handleBlur();
-  };
 
   handleFocus = () => {
     this.setState({ active: true });

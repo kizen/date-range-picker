@@ -18,6 +18,10 @@
   margin-left: 15px;
 }
 
+.rs-calendar-table-cell-un-same-month.rs-calendar-table-cell-is-today > span {
+  border: none;
+}
+
 .rs-picker-toggle.kizen-date-range-picker-dropdown {
   display: flex;
   align-items: center;
