@@ -274,15 +274,21 @@ class DateRangePicker extends React.Component {
   getDateString() {
     const { format: formatType, ranges } = this.props;
     const nextValue = this.getValue();
+    const selectedIndex = this.state.selectedIndex;
     const startDate = nextValue && nextValue[0];
     const endDate = nextValue && nextValue[1];
 
     if (startDate && endDate) {
       const displayValue = [startDate, endDate].sort(compareAsc);
 
-      const matchingRange = ranges.find((element) => {
-        return isSameDay(element.value[0], displayValue[0]) && isSameDay(element.value[1], displayValue[1]);
-      });
+      let matchingRange = null;
+      if (selectedIndex) {
+        matchingRange = ranges[selectedIndex];
+      } else {
+        matchingRange = ranges.find((element) => {
+          return isSameDay(element.value[0], displayValue[0]) && isSameDay(element.value[1], displayValue[1]);
+        });
+      }
       
       if (matchingRange && matchingRange.customPlaceholderLabel) {
         return matchingRange.customPlaceholderLabel;
@@ -370,6 +376,7 @@ class DateRangePicker extends React.Component {
     });
 
     this.handleCloseDropdown();
+    this.props.onOk && this.props.onOk(value, event);
   };
 
   updateValue(
