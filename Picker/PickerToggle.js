@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import Ripple from '../Ripple';
 import { prefix, defaultProps, createChainedFunction } from '../utils';
 import DownIcon from '../Icons/DownIcon';
+import CalendarIcon from '../Icons/CalendarIcon';
 
 class PickerToggle extends React.Component {
   static propTypes = {
@@ -78,6 +79,27 @@ class PickerToggle extends React.Component {
     }, 'kizen-date-range-picker-dropdown');
 
     return (
+      <div className="nav-link kizen-navbar-calendar-icons-wrapper">
+        <div className="kizen-navbar-calendar-innerwrapper">
+          <i
+            onClick={onClick}
+            onFocus={createChainedFunction(this.handleFocus)}
+            onBlur={createChainedFunction(this.handleBlur)}
+            tabIndex={tabIndex}
+            ref={this.toggleRef}
+            className='fa-layers fa-2x kizen-navbar-calendar-i'
+          >
+            <CalendarIcon />
+          </i>
+        </div>
+        <span className="kizen-navbar-calendar-daterange">
+          {children}
+        </span>
+        <Ripple />
+      </div>
+    );
+
+    return (
       <Component
         onClick={onClick}
         role="combobox"
@@ -87,11 +109,12 @@ class PickerToggle extends React.Component {
         onFocus={createChainedFunction(this.handleFocus)}
         onBlur={createChainedFunction(this.handleBlur)}
       >
-        <span className={this.addPrefix(hasValue ? 'value' : 'placeholder')}>
+        {/* <span className={this.addPrefix(hasValue ? 'value' : 'placeholder')}>
           {children}
         </span>
         <DownIcon className="kizen-date-range-picker-dropdown-icon"/>
-        <Ripple />
+        <Ripple /> */}
+        <CalendarIcon />
       </Component>
     );
   }

@@ -708,7 +708,8 @@ class DateRangePicker extends React.Component {
       style,
       onEntered,
       onEnter,
-      onExited
+      onExited,
+      dropdownTrigger
     } = this.props;
 
     const value = this.getValue();

@@ -4,6 +4,51 @@
   margin-bottom: 10px;
 }
 
+.kizen-navbar-calendar-icons-wrapper {
+  margin-left: 35px;
+  color: #528ef9;
+  margin: 0;
+  padding: 0;
+  min-width: 2rem;
+  padding: 0 !important;
+  margin-left: 3.5rem !important;
+  margin-right: 0 !important;
+}
+
+.kizen-navbar-calendar-innerwrapper {
+  display: inline-block;
+}
+
+.kizen-navbar-calendar-daterange {
+  font-size: 1em;
+  font-weight: 400;
+  color: #4a5660;
+  margin-bottom: 0;
+  background-color: #528ef9;
+  color: #ffffff;
+  padding: 0.3rem 0.65rem;
+  vertical-align: top;
+  border-radius: 1rem;
+}
+
+.kizen-navbar-calendar-i {
+  outline: none;
+}
+
+.kizen-navbar-calendar-icons {
+  width: 17.5px;
+  height: 20px;
+  color: #528ef9;
+}
+
+.rs-picker-menu.rs-picker-daterange-menu {
+  border-width: 1px;
+  border-color: #d8dde1;
+  border-style: solid !important;
+  border-radius: 8px;
+  border-style: none;
+}
+
 .rs-picker-menu .rs-calendar .rs-calendar-month-dropdown-cell-content, .rs-picker-menu .rs-calendar .rs-calendar-table-cell-content {
   height: 28px;
   width: 28px;
