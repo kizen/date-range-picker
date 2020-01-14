@@ -18438,6 +18438,13 @@ textarea.rs-picker-search-input {
   transition: none;
   /* stylelint-disable-next-line */
 }
+
+/* Kizen Specific KZN-700 */
+.rs-picker-menu {
+  box-shadow: 0 18px 26px rgba(0,0,0,0.06) !important;
+}
+
+
 .rs-modal-open .rs-picker-menu {
   z-index: 1055;
 }
