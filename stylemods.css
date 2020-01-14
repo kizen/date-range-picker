@@ -109,6 +109,9 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   color: #4bc7bf;
   text-transform: uppercase;
   background-color: #ffffff;
+  font-size:1.2rem;
+  font-family: 'Proxima Nova',sans-serif;
+  font-weight: 600;
 }
 
 .rs-calendar-header-month-toolbar i.disabled svg {
