@@ -1,3 +1,5 @@
+import './style.css';
+import './stylemods.css';
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/static-property-placement */
 /* eslint-disable no-unused-expressions */

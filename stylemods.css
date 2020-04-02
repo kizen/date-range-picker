@@ -53,7 +53,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   border-style: none;
 }
 
-.rs-picker-menu .rs-calendar .rs-calendar-month-dropdown-cell-content, .rs-picker-menu .rs-calendar .rs-calendar-table-cell-content {
+.rs-calendar .rs-calendar-month-dropdown-cell-content, .rs-calendar .rs-calendar-table-cell-content {
   height: 28px;
   width: 28px;
 }
@@ -166,7 +166,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .cell-in-range-after-start ~ .rs-calendar-table-cell-selected-start::before {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
@@ -174,7 +174,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .cell-in-range-before-start ~ .rs-calendar-table-cell-selected-start::before {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
@@ -182,7 +182,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .cell-in-range-after-start ~ .rs-calendar-table-cell-selected-end::before {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
@@ -190,7 +190,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .cell-in-range-before-start ~ .rs-calendar-table-cell-selected-end::before {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
@@ -198,7 +198,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .cell-not-in-range + .rs-calendar-table-cell-selected-end::before {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
@@ -206,7 +206,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .cell-not-in-range + .rs-calendar-table-cell-selected-start::before {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
@@ -218,7 +218,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .rs-calendar-table-row .rs-calendar-table-cell-selected.cell-left-edge::before {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
@@ -228,7 +228,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 .rs-calendar-table-row .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected::before,
 .rs-calendar-table-row .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected::before
  {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
@@ -237,7 +237,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 
 .rs-calendar-table-row .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-end::before,
 .rs-calendar-table-row .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-start::before  {
-  background: #cedefc; 
+  background: #cedefc;
   background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
   background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
   background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
@@ -247,7 +247,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 .cell-not-in-range + .cell-same-start-end::before,
 .cell-not-in-range + .cell-same-start-end::before,
 .cell-not-in-range + .cell-not-in-range::before  {
-  background: #ffffff; 
+  background: #ffffff;
 }
 
 .rs-calendar-table-cell.rs-calendar-table-cell-un-same-month > span {
