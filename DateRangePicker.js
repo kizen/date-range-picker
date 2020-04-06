@@ -31,7 +31,7 @@ import {
   setYear,
   compareAsc
 } from 'date-fns';
-import IntlProvider from './IntlProvider';
+import IntlProvider, { defaultLocale } from './IntlProvider';
 import DatePicker from './DatePicker';
 import {
   defaultProps,
@@ -99,26 +99,7 @@ class DateRangePicker extends React.Component {
     placement: 'bottomStart',
     limitEndYear: 1000,
     format: 'MM/dd/yy',
-    locale: {
-      sunday: 'Su',
-      monday: 'Mo',
-      tuesday: 'Tu',
-      wednesday: 'We',
-      thursday: 'Th',
-      friday: 'Fr',
-      saturday: 'Sa',
-      ok: 'OK',
-      today: 'Today',
-      yesterday: 'Yesterday',
-      last7Days: 'Last 7 Days',
-      hours: 'Hours',
-      minutes: 'Minutes',
-      seconds: 'Seconds',
-      thisMonth: 'This Month',
-      last30Days: 'Last 30 Days',
-      thisYear: 'This Year',
-      allTime: 'All Time'
-    },
+    locale: defaultLocale,
     ranges: [
       {
         label: 'today',
@@ -289,7 +270,7 @@ class DateRangePicker extends React.Component {
           return isSameDay(element.value[0], displayValue[0]) && isSameDay(element.value[1], displayValue[1]);
         });
       }
-      
+
       if (matchingRange && matchingRange.customPlaceholderLabel) {
         return matchingRange.customPlaceholderLabel;
       }
@@ -386,7 +367,7 @@ class DateRangePicker extends React.Component {
   ) {
     const { value, selectValue } = this.state;
     const { onChange, ranges } = this.props;
-    
+
     let nextValue = !_.isUndefined(nextSelectValue)
       ? nextSelectValue
       : selectValue;

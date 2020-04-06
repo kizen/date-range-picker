@@ -1,0 +1,20 @@
+export default {
+  sunday: 'Su',
+  monday: 'Mo',
+  tuesday: 'Tu',
+  wednesday: 'We',
+  thursday: 'Th',
+  friday: 'Fr',
+  saturday: 'Sa',
+  ok: 'OK',
+  today: 'Today',
+  yesterday: 'Yesterday',
+  last7Days: 'Last 7 Days',
+  hours: 'Hours',
+  minutes: 'Minutes',
+  seconds: 'Seconds',
+  thisMonth: 'This Month',
+  last30Days: 'Last 30 Days',
+  thisYear: 'This Year',
+  allTime: 'All Time'
+};
