@@ -93,7 +93,6 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   justify-content: flex-end;
   border-top: 1px solid #e5e5ea;
   padding: 15px;
-  margin-top: 4px;
   font-size: 1.4em;
   font-weight: 400;
   margin-bottom: 0;
@@ -109,7 +108,8 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   color: #4bc7bf;
   text-transform: uppercase;
   background-color: #ffffff;
-  font-size:1.2rem;
+  padding: 0;
+  font-size: 12px;
   font-family: 'Proxima Nova',sans-serif;
   font-weight: 600;
 }
