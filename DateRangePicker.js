@@ -50,6 +50,7 @@ import {
 } from './Picker';
 import { PLACEMENT } from './constants';
 import QuickSelection from './QuickSelection';
+import range from "./range";
 
 class DateRangePicker extends React.Component {
   static propTypes = {
@@ -57,6 +58,7 @@ class DateRangePicker extends React.Component {
     value: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     defaultValue: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     defaultCalendarValue: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+    defaultRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     format: PropTypes.string,
     disabled: PropTypes.bool,
     locale: PropTypes.object,
@@ -101,71 +103,14 @@ class DateRangePicker extends React.Component {
     format: 'MM/dd/yy',
     locale: defaultLocale,
     ranges: [
-      {
-        label: 'today',
-        value: [
-          setTimingMargin(new Date()),
-          setTimingMargin(new Date(), 'right')
-        ],
-        closeOverlay: false,
-        customPlaceholderLabel: 'Today'
-      },
-      {
-        label: 'yesterday',
-        value: [
-          setTimingMargin(addDays(new Date(), -1)),
-          setTimingMargin(addDays(new Date(), -1), 'right')
-        ],
-        closeOverlay: false,
-        customPlaceholderLabel: 'Yesterday'
-      },
-      {
-        label: 'thisMonth',
-        value: [
-          setTimingMargin(startOfMonth(new Date())),
-          setTimingMargin(new Date(), 'right')
-        ],
-        closeOverlay: false,
-        customPlaceholderLabel: 'This Month'
-      },
-      {
-        label: 'last7Days',
-        value: [
-          setTimingMargin(subDays(new Date(), 6)),
-          setTimingMargin(new Date(), 'right')
-        ],
-        closeOverlay: false
-      },
-      {
-        label: 'last30Days',
-        value: [
-          setTimingMargin(subDays(new Date(), 29)),
-          setTimingMargin(new Date(), 'right')
-        ],
-        closeOverlay: false,
-      },
-      {
-        label: 'thisYear',
-        value: [
-          setTimingMargin(startOfYear(new Date())),
-          setTimingMargin(new Date(), 'right')
-        ],
-        closeOverlay: false,
-        customPlaceholderLabel: 'This Year'
-      },
-      {
-        label: 'allTime',
-        value: [
-          //hard coded to Jan 1, 2000... for now, potentially a prop to pass in
-
-          setTimingMargin(setYear(startOfYear(new Date()), 2000)),
-          setTimingMargin(new Date(), 'right')
-        ],
-        closeOverlay: false,
-        default: true,
-        isAllTime: true,
-        customPlaceholderLabel: 'All Time'
-      }
+      range.today,
+      range.yesterday,
+      range.thisMonth,
+      range.last7Days,
+      range.last30Days,
+      range.thisYear,
+      range.allTime,
+      range.today
     ]
   };
 
@@ -193,12 +138,20 @@ class DateRangePicker extends React.Component {
   constructor(props) {
     super(props);
 
-    const { defaultValue, value, defaultCalendarValue, ranges } = props;
-    const defaultRangeIndex = ranges.findIndex((element) => {
-      return element.default
+    const {
+      defaultValue,
+      value,
+      defaultCalendarValue,
+      defaultRange,
+      ranges
+    } = props;
     });
-    const defaultRange = defaultRangeIndex !== -1 ? ranges[defaultRangeIndex].value : null;
-    const activeValue = value || defaultValue || defaultRange || [];
+    const defaultRangeValue = !!defaultRange
+      ? defaultRange
+      : defaultRangeIndex !== -1
+      ? ranges[defaultRangeIndex].value
+      : null;
+    const activeValue = value || defaultValue || defaultRangeValue || [];
     const calendarDate = this.getCalendarDate(value || defaultCalendarValue);
 
     this.state = {
