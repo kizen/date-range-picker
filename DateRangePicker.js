@@ -1,5 +1,5 @@
-import './style.css';
-import './stylemods.css';
+import "./style.css";
+import "./stylemods.css";
 /* eslint-disable no-else-return */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/sort-comp */
@@ -7,11 +7,11 @@ import './stylemods.css';
 /* eslint-disable lines-between-class-members */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/static-property-placement */
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import compose from 'recompose/compose';
-import _ from 'lodash';
+import * as React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import compose from "recompose/compose";
+import _ from "lodash";
 import {
   format,
   addDays,
@@ -30,9 +30,9 @@ import {
   startOfYear,
   setYear,
   compareAsc
-} from 'date-fns';
-import IntlProvider, { defaultLocale } from './IntlProvider';
-import DatePicker from './DatePicker';
+} from "date-fns";
+import IntlProvider, { defaultLocale } from "./IntlProvider";
+import DatePicker from "./DatePicker";
 import {
   defaultProps,
   prefix,
@@ -40,21 +40,21 @@ import {
   withPickerMethods,
   setTimingMargin,
   TYPE
-} from './utils';
+} from "./utils";
 
 import {
   PickerToggle,
   MenuWrapper,
   PickerToggleTrigger,
   getToggleWrapperClassName
-} from './Picker';
-import { PLACEMENT } from './constants';
-import QuickSelection from './QuickSelection';
+} from "./Picker";
+import { PLACEMENT } from "./constants";
+import QuickSelection from "./QuickSelection";
 import range from "./range";
 
 class DateRangePicker extends React.Component {
   static propTypes = {
-    appearance: PropTypes.oneOf(['default', 'subtle']),
+    appearance: PropTypes.oneOf(["default", "subtle"]),
     value: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     defaultValue: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     defaultCalendarValue: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
@@ -63,7 +63,7 @@ class DateRangePicker extends React.Component {
     disabled: PropTypes.bool,
     locale: PropTypes.object,
     hoverRange: PropTypes.oneOfType([
-      PropTypes.oneOf(['week', 'month']),
+      PropTypes.oneOf(["week", "month"]),
       PropTypes.func
     ]),
     isoWeek: PropTypes.bool,
@@ -94,13 +94,13 @@ class DateRangePicker extends React.Component {
     onEntered: PropTypes.func,
     onExit: PropTypes.func,
     onExiting: PropTypes.func,
-    onExited: PropTypes.func,
+    onExited: PropTypes.func
   };
   static defaultProps = {
-    appearance: 'default',
-    placement: 'bottomStart',
+    appearance: "default",
+    placement: "bottomStart",
     limitEndYear: 1000,
-    format: 'MM/dd/yy',
+    format: "MM/dd/yy",
     locale: defaultLocale,
     ranges: [
       range.today,
@@ -117,7 +117,7 @@ class DateRangePicker extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const { value } = nextProps;
 
-    if (typeof value === 'undefined') {
+    if (typeof value === "undefined") {
       return null;
     }
 
@@ -145,6 +145,8 @@ class DateRangePicker extends React.Component {
       defaultRange,
       ranges
     } = props;
+    const defaultRangeIndex = ranges.findIndex(element => {
+      return element.default;
     });
     const defaultRangeValue = !!defaultRange
       ? defaultRange
@@ -173,14 +175,14 @@ class DateRangePicker extends React.Component {
   getCalendarDate = (value = [], nextSelectedIndex = null) => {
     if (value[0] && value[1]) {
       if (this.isAllTime(nextSelectedIndex)) {
-        console.log('IsAllTime');
+        console.log("IsAllTime");
         return [value[1], addMonths(value[1], 1)];
       }
       const sameMonth = isSameMonth(value[0], value[1]);
       return [value[0], sameMonth ? addMonths(value[1], 1) : value[1]];
     }
     return [new Date(), addMonths(new Date(), 1)];
-  }
+  };
 
   isAllTime = (nextSelectedIndex = null) => {
     const { selectedIndex } = this.state;
@@ -190,15 +192,15 @@ class DateRangePicker extends React.Component {
       return element.isAllTime;
     });
 
-    return nextSelectedIndex !== null ?
-      nextSelectedIndex === allTimeRangeIndex :
-      selectedIndex === allTimeRangeIndex;
-  }
+    return nextSelectedIndex !== null
+      ? nextSelectedIndex === allTimeRangeIndex
+      : selectedIndex === allTimeRangeIndex;
+  };
 
   getValue = () => {
     const { value } = this.props;
 
-    if (typeof value !== 'undefined') {
+    if (typeof value !== "undefined") {
       return value;
     }
 
@@ -219,8 +221,11 @@ class DateRangePicker extends React.Component {
       if (selectedIndex) {
         matchingRange = ranges[selectedIndex];
       } else {
-        matchingRange = ranges.find((element) => {
-          return isSameDay(element.value[0], displayValue[0]) && isSameDay(element.value[1], displayValue[1]);
+        matchingRange = ranges.find(element => {
+          return (
+            isSameDay(element.value[0], displayValue[0]) &&
+            isSameDay(element.value[1], displayValue[1])
+          );
         });
       }
 
@@ -228,14 +233,17 @@ class DateRangePicker extends React.Component {
         return matchingRange.customPlaceholderLabel;
       }
 
-      return `${format(displayValue[0], formatType)} - ${format(displayValue[1], formatType)}`;
+      return `${format(displayValue[0], formatType)} - ${format(
+        displayValue[1],
+        formatType
+      )}`;
     }
 
-    return '';
+    return "";
   }
 
   // hover range presets
-  getWeekHoverRange = (date) => {
+  getWeekHoverRange = date => {
     const { isoWeek } = this.props;
 
     if (isoWeek) {
@@ -245,7 +253,7 @@ class DateRangePicker extends React.Component {
 
     return [startOfWeek(date), endOfWeek(date)];
   };
-  getMonthHoverRange = (date) => [startOfMonth(date), endOfMonth(date)];
+  getMonthHoverRange = date => [startOfMonth(date), endOfMonth(date)];
 
   getHoverRange(date) {
     const { hoverRange } = this.props;
@@ -254,15 +262,15 @@ class DateRangePicker extends React.Component {
     }
 
     let hoverRangeFunc = hoverRange;
-    if (hoverRange === 'week') {
+    if (hoverRange === "week") {
       hoverRangeFunc = this.getWeekHoverRange;
     }
 
-    if (hoverRangeFunc === 'month') {
+    if (hoverRangeFunc === "month") {
       hoverRangeFunc = this.getMonthHoverRange;
     }
 
-    if (typeof hoverRangeFunc !== 'function') {
+    if (typeof hoverRangeFunc !== "function") {
       return [];
     }
 
@@ -313,11 +321,7 @@ class DateRangePicker extends React.Component {
     this.props.onOk && this.props.onOk(value, event);
   };
 
-  updateValue(
-    event,
-    nextSelectValue,
-    closeOverlay = true
-  ) {
+  updateValue(event, nextSelectValue, closeOverlay = true) {
     const { value, selectValue } = this.state;
     const { onChange, ranges } = this.props;
 
@@ -336,13 +340,13 @@ class DateRangePicker extends React.Component {
     }
 
     if (isAfter(nextValue[0], nextValue[1])) {
-      nextValue.reverse();;
+      nextValue.reverse();
     }
 
-    setTimingMargin(nextValue[1], 'right');
+    setTimingMargin(nextValue[1], "right");
 
     //Find if the selected values are in our ranges
-    const rangeExistsIndex = ranges.findIndex((element) => {
+    const rangeExistsIndex = ranges.findIndex(element => {
       const dates = element.value;
       return (
         isSameDay(dates[0], nextValue[0]) && isSameDay(dates[1], nextValue[1])
@@ -369,7 +373,7 @@ class DateRangePicker extends React.Component {
     }
   }
 
-  handleOK = (event) => {
+  handleOK = event => {
     this.updateValue(event);
     this.props.onOk && this.props.onOk(this.state.selectValue, event);
   };
@@ -400,10 +404,10 @@ class DateRangePicker extends React.Component {
       }
 
       nextValue[0] = setTimingMargin(nextValue[0]);
-      nextValue[1] = setTimingMargin(nextValue[1], 'right');
+      nextValue[1] = setTimingMargin(nextValue[1], "right");
 
       //Find if the selected values are in our ranges
-      const rangeExistsIndex = ranges.findIndex((element) => {
+      const rangeExistsIndex = ranges.findIndex(element => {
         const dates = element.value;
         return (
           isSameDay(dates[0], nextValue[0]) && isSameDay(dates[1], nextValue[1])
@@ -439,7 +443,7 @@ class DateRangePicker extends React.Component {
     });
   };
 
-  handleMouseMoveSelectValue = (date) => {
+  handleMouseMoveSelectValue = date => {
     const {
       doneSelected,
       selectValue,
@@ -567,7 +571,7 @@ class DateRangePicker extends React.Component {
     }
     return false;
   };
-  addPrefix = (name) => prefix(this.props.classPrefix)(name);
+  addPrefix = name => prefix(this.props.classPrefix)(name);
 
   renderDropdownMenu() {
     const {
@@ -578,7 +582,7 @@ class DateRangePicker extends React.Component {
       showWeekNumbers
     } = this.props;
     const { calendarDate, selectValue, hoverValue, doneSelected } = this.state;
-    const classes = classNames(this.addPrefix('daterange-menu'), menuClassName);
+    const classes = classNames(this.addPrefix("daterange-menu"), menuClassName);
 
     const pickerProps = {
       isoWeek,
@@ -596,11 +600,11 @@ class DateRangePicker extends React.Component {
 
     return (
       <MenuWrapper className={classes} ref={this.menuContainerRef}>
-        <div className={this.addPrefix('daterange-panel')}>
+        <div className={this.addPrefix("daterange-panel")}>
           <div
             className={classNames(
-              this.addPrefix('daterange-content'),
-              'kizen-daterange-content'
+              this.addPrefix("daterange-content"),
+              "kizen-daterange-content"
             )}
           >
             <div className="kizen-quick-selection-container">
@@ -616,7 +620,7 @@ class DateRangePicker extends React.Component {
                 tempSelectedIndex={this.state.tempSelectedIndex}
               />
             </div>
-            <div className={this.addPrefix('daterange-calendar-group')}>
+            <div className={this.addPrefix("daterange-calendar-group")}>
               <DatePicker index={0} {...pickerProps} />
               <DatePicker index={1} {...pickerProps} />
             </div>
@@ -649,7 +653,7 @@ class DateRangePicker extends React.Component {
     const value = this.getValue();
     const hasValue = value && value.length > 1;
     const classes = getToggleWrapperClassName(
-      'daterange',
+      "daterange",
       this.addPrefix,
       this.props,
       hasValue
@@ -682,7 +686,7 @@ class DateRangePicker extends React.Component {
 
 const enhance = compose(
   defaultProps({
-    classPrefix: 'picker'
+    classPrefix: "picker"
   }),
   withPickerMethods()
 );
