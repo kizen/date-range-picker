@@ -5276,9 +5276,9 @@ hr {
 }
 .rs-calendar {
   background-color: #fff;
-  padding-top: 12px;
+  padding-top: 5px;
   position: relative;
-  min-height: 266px;
+  min-height: 259px;
   overflow: hidden;
 }
 .rs-calendar-bordered .rs-calendar-table {
@@ -6744,7 +6744,7 @@ hr {
 }
 /* rtl:end:ignore */
 .rs-calendar-view {
-  padding: 4px 12px 12px;
+  padding: 4px 12px 5px;
 }
 .rs-calendar-table {
   display: table;

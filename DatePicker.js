@@ -1,12 +1,12 @@
-import './style.css';
-import './stylemods.css';
+import "./style.css";
+import "./stylemods.css";
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/static-property-placement */
 /* eslint-disable no-unused-expressions */
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { addMonths } from 'date-fns';
-import Calendar from './Calendar';
+import * as React from "react";
+import PropTypes from "prop-types";
+import { addMonths } from "date-fns";
+import Calendar from "./Calendar";
 
 class DatePicker extends React.Component {
   static propTypes = {
@@ -27,7 +27,7 @@ class DatePicker extends React.Component {
   static defaultProps = {
     value: [],
     calendarDate: [new Date(), addMonths(new Date(), 1)],
-    format: 'mm-dd-yyyy',
+    format: "mm-dd-yyyy",
     index: 0
   };
 
@@ -38,17 +38,17 @@ class DatePicker extends React.Component {
     };
   }
 
-  onMoveForword = (nextPageDate) => {
+  onMoveForword = nextPageDate => {
     const { onChangeCalendarDate, index } = this.props;
     onChangeCalendarDate && onChangeCalendarDate(index, nextPageDate);
   };
 
-  onMoveBackward = (nextPageDate) => {
+  onMoveBackward = nextPageDate => {
     const { onChangeCalendarDate, index } = this.props;
     onChangeCalendarDate && onChangeCalendarDate(index, nextPageDate);
   };
 
-  handleChangePageDate = (nextPageDate) => {
+  handleChangePageDate = nextPageDate => {
     const { onChangeCalendarDate, index } = this.props;
     onChangeCalendarDate && onChangeCalendarDate(index, nextPageDate);
     this.setState({
@@ -58,10 +58,10 @@ class DatePicker extends React.Component {
 
   toggleMonthDropdown = () => {
     const { calendarState } = this.state;
-    if (calendarState === 'DROP_MONTH') {
+    if (calendarState === "DROP_MONTH") {
       this.setState({ calendarState: undefined });
     } else {
-      this.setState({ calendarState: 'DROP_MONTH' });
+      this.setState({ calendarState: "DROP_MONTH" });
     }
   };
 

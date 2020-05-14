@@ -53,14 +53,17 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   border-style: none;
 }
 
-.rs-calendar .rs-calendar-month-dropdown-cell-content, .rs-calendar .rs-calendar-table-cell-content {
+.rs-calendar .rs-calendar-month-dropdown-cell-content,
+.rs-calendar .rs-calendar-table-cell-content {
   height: 28px;
   width: 28px;
 }
 
-.rs-picker-daterange .rs-picker-toggle.kizen-date-range-picker-dropdown .rs-picker-toggle-value {
+.rs-picker-daterange
+  .rs-picker-toggle.kizen-date-range-picker-dropdown
+  .rs-picker-toggle-value {
   font-size: 14px;
-  color: #4A5660;
+  color: #4a5660;
 }
 
 .kizen-date-range-picker-dropdown-icon {
@@ -110,7 +113,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   background-color: #ffffff;
   padding: 0;
   font-size: 11px;
-  font-family: 'Proxima Nova',sans-serif;
+  font-family: "Proxima Nova", sans-serif;
   font-weight: 600;
 }
 
@@ -167,86 +170,90 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 
 .cell-in-range-after-start ~ .rs-calendar-table-cell-selected-start::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to right, #ffffff 50%, #cedefc 50%);
 }
 
 .cell-in-range-before-start ~ .rs-calendar-table-cell-selected-start::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to left,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to left, #ffffff 50%, #cedefc 50%);
 }
 
 .cell-in-range-after-start ~ .rs-calendar-table-cell-selected-end::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to left,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to left, #ffffff 50%, #cedefc 50%);
 }
 
 .cell-in-range-before-start ~ .rs-calendar-table-cell-selected-end::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to right, #ffffff 50%, #cedefc 50%);
 }
 
 .cell-not-in-range + .rs-calendar-table-cell-selected-end::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to right, #ffffff 50%, #cedefc 50%);
 }
 
 .cell-not-in-range + .rs-calendar-table-cell-selected-start::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to right, #ffffff 50%, #cedefc 50%);
 }
 
-.rs-calendar-table-row .rs-calendar-table-cell.rs-calendar-table-cell-selected.cell-not-in-range.cell-left-edge::before {
+.rs-calendar-table-row
+  .rs-calendar-table-cell.rs-calendar-table-cell-selected.cell-not-in-range.cell-left-edge::before {
   background: #ffffff;
 }
 
 .rs-calendar-table-row .rs-calendar-table-cell-selected.cell-left-edge::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to right, #ffffff 50%, #cedefc 50%);
 }
 
-.rs-calendar-table-row .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected::before,
-.rs-calendar-table-row .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected::before
- {
+.rs-calendar-table-row
+  .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected::before,
+.rs-calendar-table-row
+  .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to left,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to left, #ffffff 50%, #cedefc 50%);
 }
 
-.rs-calendar-table-row .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-end::before,
-.rs-calendar-table-row .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-start::before  {
+.rs-calendar-table-row
+  .cell-left-edge.cell-in-range-before-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-end::before,
+.rs-calendar-table-row
+  .cell-left-edge.cell-in-range-after-start.rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-start::before {
   background: #cedefc;
-  background: -webkit-linear-gradient(left,#ffffff 50%,#cedefc 50%);
-  background: -o-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: -moz-linear-gradient(right,#ffffff 50%,#cedefc 50%);
-  background: linear-gradient(to right,#ffffff 50%,#cedefc 50%);
+  background: -webkit-linear-gradient(left, #ffffff 50%, #cedefc 50%);
+  background: -o-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: -moz-linear-gradient(right, #ffffff 50%, #cedefc 50%);
+  background: linear-gradient(to right, #ffffff 50%, #cedefc 50%);
 }
 
 .cell-not-in-range + .cell-same-start-end::before,
 .cell-not-in-range + .cell-same-start-end::before,
-.cell-not-in-range + .cell-not-in-range::before  {
+.cell-not-in-range + .cell-not-in-range::before {
   background: #ffffff;
 }
 
@@ -265,6 +272,9 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   grid-template-columns: 0px 20px 1fr 20px 0px;
   padding: 0px 12px;
 }
+.rs-calendar .rs-calendar-header .rs-calendar-header-month-toolbar button {
+  padding: 0;
+}
 
 .rs-calendar-table-header-row
   .rs-calendar-table-cell
@@ -275,7 +285,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
 }
 
 .rs-calendar-view {
-  padding-top: 12px;
+  padding-top: 3px;
 }
 
 .rs-calendar-header.rs-calendar-header-has-month {
@@ -322,7 +332,7 @@ html body .rs-picker-menu.rs-picker-daterange-menu {
   grid-template-columns: auto 1fr;
 }
 
-@media only screen and (min-width : 768px) {
+@media only screen and (min-width: 768px) {
   .kizen-daterange-content {
     grid-template-columns: 123px 1fr;
   }
