@@ -1,38 +1,46 @@
-import React from 'react';
-import _ from 'lodash';
-import OverlayTrigger from 'rsuite-utils/lib/Overlay/OverlayTrigger';
-import { placementPolyfill } from '../utils';
-import IntlContext from '../IntlProvider/IntlContext';
+import React from "react";
+import _ from "lodash";
+import OverlayTrigger from "rsuite-utils/lib/Overlay/OverlayTrigger";
+import { placementPolyfill } from "../utils";
+import IntlContext from "../IntlProvider/IntlContext";
 
 const PickerToggleTriggerProps = [
-  'onEntered',
-  'onExited',
-  'open',
-  'defaultOpen',
-  'disabled',
-  'onEnter',
-  'onEntering',
-  'onExit',
-  'onExiting',
-  'onHide',
-  'container',
-  'containerPadding',
-  'preventOverflow'
+  "onEntered",
+  "onExited",
+  "open",
+  "defaultOpen",
+  "disabled",
+  "onEnter",
+  "onEntering",
+  "onExit",
+  "onExiting",
+  "onHide",
+  "container",
+  "containerPadding",
+  "preventOverflow"
 ];
 
 const PickerToggleTrigger = React.forwardRef((props, ref) => {
-  const { pickerProps, speaker, trigger = 'click', open, ...rest } = props;
+  const {
+    pickerProps,
+    speaker,
+    trigger = "click",
+    open,
+    animation = false,
+    ...rest
+  } = props;
   const { placement } = pickerProps;
 
   return (
     <IntlContext.Consumer>
-      {(context) => (
+      {context => (
         <OverlayTrigger
           trigger={trigger}
           ref={ref}
           open={open}
           placement={placementPolyfill(placement, context && context.rtl)}
           speaker={speaker}
+          animation={animation}
           {..._.pick(pickerProps, PickerToggleTriggerProps)}
           {...rest}
         />
@@ -40,6 +48,6 @@ const PickerToggleTrigger = React.forwardRef((props, ref) => {
     </IntlContext.Consumer>
   );
 });
-PickerToggleTrigger.displayName = 'PickerToggleTrigger';
+PickerToggleTrigger.displayName = "PickerToggleTrigger";
 
 export default PickerToggleTrigger;
